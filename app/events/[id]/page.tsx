@@ -12,9 +12,11 @@ const eventData: Record<
   {
     title: string
     description: string[]
+    topics?:string[]
     rounds: { name: string; description: string }[]
-    venue: string
+    mode: string
     dateTime: string
+    requirements?:string[]
     rules: string[]
     coordinators: { name: string; phone: string }[]
     fileCode: string
@@ -31,7 +33,7 @@ const eventData: Record<
       { name: "Round 1", description: "Exploration Phase - Navigate the foundational concepts" },
       { name: "Round 2", description: "Final Showdown - Apply your knowledge in the ultimate test" },
     ],
-    venue: "E-Block Lab 204",
+    mode:"offline",
     dateTime: "February 28, 2025 — 10:00 AM to 1:00 PM",
     rules: [
       "Participants must arrive 15 minutes before the scheduled time",
@@ -56,7 +58,7 @@ const eventData: Record<
       { name: "Round 1", description: "Discovery Phase - Uncover hidden technological secrets" },
       { name: "Round 2", description: "Implementation Phase - Build something extraordinary" },
     ],
-    venue: "Tech Hub - Room 302",
+    mode:"offline",
     dateTime: "February 28, 2025 — 2:00 PM to 5:00 PM",
     rules: [
       "Individual participation only",
@@ -81,7 +83,7 @@ const eventData: Record<
       { name: "Round 1", description: "Initiation - Enter the realm of advanced concepts" },
       { name: "Round 2", description: "Mastery - Prove your worth in the final challenge" },
     ],
-    venue: "Innovation Center - Hall A",
+    mode: "offline",
     dateTime: "March 1, 2025 — 9:00 AM to 12:00 PM",
     rules: [
       "Pre-registration mandatory",
@@ -96,79 +98,89 @@ const eventData: Record<
     fileCode: "FILE-003",
   },
   hackathon: {
-    title: "HACKATHON",
+    title: "HACKATHON - HACKZEN",
     description: [
-      "48 hours in the Upside Down. Build or be consumed by the void of infinite possibilities.",
-      "Push the boundaries of creation as time warps around you in this ultimate coding challenge.",
-      "Only the strongest minds will survive the darkness and emerge with solutions to save the world.",
+     "Hackzen is an innovation-driven hackathon that encourages participants to collaboratively design solutions for real-world challenges within a limited time. The event promotes creativity, feasibility, and rapid development while allowing teams to explore diverse technology and application domains. It serves as a platform for transforming ideas into impactful solutions through structured evaluation and hands-on prototyping."
     ],
     rounds: [
-      { name: "Round 1", description: "Ideation Phase - Pitch your concept to the council" },
-      { name: "Round 2", description: "Development Sprint - 24 hours of intense building" },
-      { name: "Round 3", description: "Final Presentation - Showcase your creation" },
+      { name: "IdeaXone", description: "IdeaXone is the ideation and proposal phase where teams select a domain and identify a meaningful problem within it. Participants present a clear problem statement along with an innovative solution, explaining the approach, technology stack, feasibility, and potential impact. Participants will be given a duration of 7-mins to present their ideas. This round focuses on originality, clarity of thought, and effective communication, with the most promising teams advancing to the next stage." },
+      { name: "BuildVerse", description: "BuildVerse challenges shortlisted teams to bring their ideas to life through working prototypes. Participants demonstrate the functionality of their solution, explain design and development decisions, and showcase how the prototype addresses the identified problem within a duration of 7-mins. Evaluation is based on technical depth, practicality, usability, and execution quality." },
     ],
-    venue: "Main Auditorium & Computer Labs",
-    dateTime: "February 28-29, 2025 — 48 Hours Non-Stop",
+    mode: "offline",
+    dateTime: "February 07, 2026 -  9:00 am - 01:00 pm",
     rules: [
-      "Team size: 3-4 members",
-      "Original work only - no pre-built solutions",
-      "Must use at least one API from sponsors",
-      "Sleeping bags and refreshments allowed",
-      "Mentors available throughout the event",
+      "Team of  2 - 4 members",
+      "Teams must submit the presentation of their proposed solution on or before the specified deadline for shortlisting",
+      "Selected teams should bring their working prototype on the event day",
+      "Shortlisted teams for Round 2 must present and demonstrate their prototype during evaluation",
+      "All submissions must be original; plagiarism or use of pre-built solutions is strictly prohibited",
+      "Teams should be prepared to clearly explain the problem statement, solution approach, and technical implementation",
+    ],
+    topics:[ "Artificial Intelligence & Machine Learning",
+    "Internet of Things (IoT)",
+    "Signal Processing",
+    "Embedded Systems",
+    "Robotics and Automation",
+    "Healthcare & MedTech",
+    "Agriculture Technology (AgriTech)",
+    "Smart Cities",
     ],
     coordinators: [
-      { name: "Steve Harrington", phone: "9876543216" },
-      { name: "Nancy Wheeler", phone: "9876543217" },
+      { name: "Rohini", phone: "+91 88386 19825" },
+      { name: "Sunil  Sanjay ", phone: "+91 93600 41571" },
     ],
     fileCode: "FILE-004",
   },
   codeathon: {
     title: "CODEATHON",
     description: [
-      "Race against time in the shadow realm of algorithms where every second counts.",
-      "Solve puzzles that twist reality and challenge your perception of what's possible.",
-      "The clock ticks down as you navigate through increasingly complex challenges.",
+      "Codeathon is a competitive coding event designed to test participants’ logical thinking, problem-solving ability, and programming fundamentals under time pressure. The event challenges teams to apply core concepts of data structures, algorithms, and computational logic while maintaining accuracy and efficiency. ",
     ],
     rounds: [
-      { name: "Round 1", description: "Warm-up Challenges - Easy to Medium difficulty" },
-      { name: "Round 2", description: "Final Battle - Hard problems only" },
+      { name: "LogicXpress", description: "LogicXpress is the preliminary round focused on assessing core programming knowledge and logical reasoning. Participants answer a wide range of questions covering topics such as memory allocation, pointers, recursion, type casting, strings, functions, exception handling, object-oriented concepts, and time complexity.Speed, accuracy, and strong conceptual understanding are key to securing a place in the final round." },
+      { name: "Codex", description: "Codex is the advanced coding round where shortlisted teams solve challenging algorithmic problems. Participants work on problems involving dynamic programming and graph traversal techniques. This round emphasizes optimization, efficient logic formulation, and clean implementation. Teams are evaluated based on correctness, performance, and overall problem-solving approach." },
     ],
-    venue: "Computer Science Lab 101",
-    dateTime: "March 1, 2025 — 2:00 PM to 6:00 PM",
+    mode: "offline",
+    dateTime: "February 08,2026 — 9:00 am - 12:00 pm",
     rules: [
-      "Individual participation",
-      "Languages allowed: C, C++, Java, Python",
-      "Internet access prohibited during contest",
-      "Plagiarism results in immediate disqualification",
+      "Participation : Team of  2 members",
     ],
     coordinators: [
-      { name: "Robin Buckley", phone: "9876543218" },
-      { name: "Eddie Munson", phone: "9876543219" },
+      { name: "Kavinaya", phone: "+91 90251 47460" },
+      { name: "Prahalya", phone: "+91 93451 32434" },
     ],
     fileCode: "FILE-005",
   },
   "bot-lf": {
-    title: "BOT LF",
+    title: "BOT EVENT 1 - PATHTRONIX",
     description: [
-      "Line following automatons navigate the dark corridors of the Upside Down.",
-      "Program your creation to sense the path through shadow and light.",
-      "Only the most precise machines will find their way through the maze.",
+      "PathTronix is an exciting Line Following Robot Challenge that invites participants to design and program autonomous robots capable of navigating a predefined track using intelligent line-following techniques. The event unfolds across multiple rounds, each testing precision, speed, adaptability, and control. From sharp curves and intersections to ramps and obstacles, teams must showcase robust design and smart .",
     ],
     rounds: [
-      { name: "Round 1", description: "Time Trials - Complete the track" },
-      { name: "Round 2", description: "Final Race - Head-to-head competition" },
+      { name: "Tracron", description: "This round tests the robot’s ability to handle a dynamic track filled with straight and dashed lines, sharp turns, false paths, and misleading trails. Precision sensing, quick correction, and intelligent path selection are crucial to avoid distractions. Teams must strike the perfect balance between speed and accuracy, as smooth navigation can be the key to advancing further." },
+      { name: "SmackBot", description: "The challenge escalates with the introduction of ramps and solid obstacles. Robots must maintain stability and line tracking while tackling elevation changes and physical barriers. Strong mechanical design, proper traction, and efficient obstacle-handling strategies are essential. This round pushes teams to demonstrate resilience, recovery skills, and advanced navigation under tougher conditions." },
     ],
-    venue: "Robotics Arena - Ground Floor",
-    dateTime: "March 1, 2025 — 10:00 AM to 2:00 PM",
+    mode: "offline",
+    dateTime: "February 08, 2026 — 9:00 am - 13:00 pm",
+    requirements: ["Only fully autonomous robots are allowed; remote-controlled robots are not permitted",
+    "Robots must run only on onboard power (no external power supply)",
+    "Robot size must not exceed 20 × 20 × 10  (L × W × H) in cm",
+    "Track length will be 15 to 20 meters, depending on the round",
+    "Line width will be 20 to 25 mm",
+    "Obstacles will be 10 cm cubes weighing 20 to 50 grams",
+    "Ramp inclination will be 20 to 25 degrees",
+    "Gaps in dashed lines will be 20 to 25 mm",
+    ],
     rules: [
-      "Bot dimensions: Max 20cm x 20cm",
-      "Pre-built bots allowed",
-      "Maximum 2 attempts per round",
-      "No wireless controllers",
+      "The practice track and the actual competition track will be different",
+      "The time recorded by the organizers will be taken as final for scoring",
+      "If a robot goes off the line, it must restart from the nearest checkpoint already crossed",
+      "Robots must not damage the track or leave marks on it; any damage will lead to immediate disqualification",
+      "The maximum time allowed per run is 3 to 5 minutes, depending on the round",
     ],
     coordinators: [
-      { name: "Jonathan Byers", phone: "9876543220" },
-      { name: "Argyle", phone: "9876543221" },
+      { name: "Jayasri Rani S ", phone: "+91 93607 37144" },
+      { name: "Pavithran S Y ", phone: "+91 93456 93986" },
     ],
     fileCode: "FILE-006",
   },
@@ -184,7 +196,7 @@ const eventData: Record<
       { name: "Round 2", description: "Semi-Finals - The survivors clash" },
       { name: "Round 3", description: "Grand Final - Champion crowned" },
     ],
-    venue: "Robotics Arena - Ground Floor",
+    mode: "offline",
     dateTime: "March 1, 2025 — 3:00 PM to 7:00 PM",
     rules: [
       "Weight limit: 5kg maximum",
@@ -209,7 +221,7 @@ const eventData: Record<
       { name: "Round 1", description: "Theme Reveal - 2 hours to create" },
       { name: "Round 2", description: "Presentation - Defend your vision" },
     ],
-    venue: "Design Studio - Block C",
+    mode: "offline",
     dateTime: "February 28, 2025 — 11:00 AM to 3:00 PM",
     rules: [
       "Software: Adobe Suite or Figma only",
@@ -235,7 +247,7 @@ const eventData: Record<
       { name: "Round 2", description: "Buzzer Round - Quick-fire questions" },
       { name: "Round 3", description: "Final Showdown - The ultimate test" },
     ],
-    venue: "Seminar Hall 2",
+    mode: "offline",
     dateTime: "March 1, 2025 — 11:00 AM to 1:00 PM",
     rules: [
       "Team size: 2 members",
@@ -260,7 +272,7 @@ const eventData: Record<
       { name: "Round 1", description: "Elimination Games" },
       { name: "Round 2", description: "Finals" },
     ],
-    venue: "Open Air Theatre",
+    mode: "offline",
     dateTime: "February 28, 2025 — 4:00 PM to 6:00 PM",
     rules: ["Individual participation", "Comfortable clothing recommended", "Rules explained at venue", "Have fun!"],
     coordinators: [
@@ -280,7 +292,7 @@ const eventData: Record<
       { name: "Round 1", description: "Team Challenges" },
       { name: "Round 2", description: "Individual Finals" },
     ],
-    venue: "Sports Complex",
+    mode: "offline",
     dateTime: "March 1, 2025 — 4:00 PM to 6:00 PM",
     rules: ["Team size: 4 members", "Sportswear mandatory", "ID cards required", "Spirit of sportsmanship expected"],
     coordinators: [
@@ -300,7 +312,7 @@ const eventData: Record<
       { name: "Round 1", description: "Technical Quiz" },
       { name: "Round 2", description: "Hands-on Challenge" },
     ],
-    venue: "Tech Hub - Main Hall",
+    mode: "offline",
     dateTime: "February 28, 2025 — 1:00 PM to 4:00 PM",
     rules: [
       "Individual participation",
@@ -326,7 +338,7 @@ const eventData: Record<
       { name: "Round 2", description: "Semi-Final - The elite clash" },
       { name: "Round 3", description: "Grand Finale - Legend is born" },
     ],
-    venue: "Main Auditorium",
+    mode: "offline",
     dateTime: "March 1, 2025 — All Day Event",
     rules: [
       "Team size: 3-5 members",
@@ -352,7 +364,7 @@ const eventData: Record<
       { name: "Round 1", description: "Abstract Submission Review" },
       { name: "Round 2", description: "Presentation & Q&A" },
     ],
-    venue: "Conference Room - Block A",
+    mode: "offline",
     dateTime: "February 28, 2025 — 9:00 AM to 12:00 PM",
     rules: [
       "Team size: 1-2 members",
@@ -377,7 +389,7 @@ const eventData: Record<
       { name: "Round 1", description: "Paper Screening" },
       { name: "Round 2", description: "Live Presentation" },
     ],
-    venue: "Conference Room - Block B",
+    mode: "offline",
     dateTime: "March 1, 2025 — 9:00 AM to 12:00 PM",
     rules: [
       "IEEE format required",
@@ -405,7 +417,7 @@ const defaultEvent = {
     { name: "Round 1", description: "Information Redacted" },
     { name: "Round 2", description: "Information Redacted" },
   ],
-  venue: "Location Classified",
+  mode: "offline",
   dateTime: "Date & Time TBD",
   rules: ["Clearance Level 4 required", "Non-disclosure agreement mandatory", "Await further instructions"],
   coordinators: [{ name: "Agent [REDACTED]", phone: "CLASSIFIED" }],

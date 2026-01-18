@@ -8,13 +8,16 @@ interface EventDetailsClientProps {
   eventId: string
   event: {
     title: string
+    topics?: string[]
+
     description: string[]
     rounds: { name: string; description: string }[]
-    venue: string
+    mode?: string
     dateTime: string
+    requirements?:string[]
     rules: string[]
     coordinators: { name: string; phone: string }[]
-    fileCode: string
+    fileCode?: string
   }
   isRegistered: boolean
   eventFeePaid: boolean
@@ -201,18 +204,18 @@ export default function EventDetailsClient({
               {/* Divider */}
               <div className="h-px bg-gradient-to-r from-transparent via-red-800/50 to-transparent" />
 
-              {/* Venue & Date/Time */}
+              {/* Mode */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <section
                   className="animate-content-fade-in opacity-0"
                   style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
                 >
                   <h3 className="font-serif text-lg sm:text-xl text-red-500 tracking-wider mb-3 animate-flicker hover:animate-glitch-1 transition-all cursor-default">
-                    VENUE
+                    MODE
                   </h3>
                   <p className="text-gray-400 text-sm sm:text-base flex items-center gap-2">
                     <span className="text-red-600">◉</span>
-                    {event.venue}
+                    {event.mode}
                   </p>
                 </section>
 
@@ -232,7 +235,88 @@ export default function EventDetailsClient({
 
               {/* Divider */}
               <div className="h-px bg-gradient-to-r from-transparent via-red-800/50 to-transparent" />
+{/* Divider */}
+              <div className="h-px bg-gradient-to-r from-transparent via-red-800/50 to-transparent" />
 
+              {/* Entry Fee */}
+              <section
+                className="animate-content-fade-in opacity-0"
+                style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+              >
+                <h3 className="font-serif text-lg sm:text-xl text-red-500 tracking-wider mb-3 animate-flicker hover:animate-glitch-1 transition-all cursor-default">
+                  ENTRY FEE
+                </h3>
+                <div className="space-y-2">
+                  <p className="text-gray-400 text-sm sm:text-base flex items-start gap-2">
+                    <span className="text-red-600 mt-1">◉</span>
+                    <span>
+                      <span className="text-red-400">Non-PSG Tech:</span> Rs. 200
+                    </span>
+                  </p>
+                  <p className="text-gray-400 text-sm sm:text-base flex items-start gap-2">
+                    <span className="text-red-600 mt-1">◉</span>
+                    <span>
+                      <span className="text-red-400">PSG Tech:</span> Rs. 250
+                    </span>
+                  </p>
+                </div>
+              </section>
+              {event.topics && event.topics.length > 0 && (
+  <>
+    {/* Divider */}
+    <div className="h-px bg-gradient-to-r from-transparent via-red-800/50 to-transparent" />
+
+    <section
+      className="animate-content-fade-in opacity-0"
+      style={{ animationDelay: "0.7s", animationFillMode: "forwards" }}
+    >
+      <h3 className="font-serif text-lg sm:text-xl text-red-500 tracking-wider mb-3">
+        TOPICS
+      </h3>
+
+      <ul className="space-y-2">
+        {event.topics.map((topic, index) => (
+          <li
+            key={index}
+            className="text-gray-400 text-sm sm:text-base flex items-start gap-2"
+          >
+            <span className="text-red-600 mt-1">◉</span>
+            <span>{topic}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </>
+)}
+
+{/* Event Requirements */}
+              {event.requirements && event.requirements.length > 0 && (
+                <>
+                  <section
+                    className="animate-content-fade-in opacity-0"
+                    style={{ animationDelay: "0.62s", animationFillMode: "forwards" }}
+                  >
+                    <h3 className="font-serif text-lg sm:text-xl text-red-500 tracking-wider mb-3 animate-flicker hover:animate-glitch-1 transition-all cursor-default">
+                      EVENT REQUIREMENTS
+                    </h3>
+                    <ul className="space-y-2">
+                      {event.requirements.map((req, i) => (
+                        <li
+                          key={i}
+                          className="text-gray-400 text-sm sm:text-base flex items-start gap-2 animate-list-item-fade opacity-0"
+                          style={{ animationDelay: `${0.65 + i * 0.08}s`, animationFillMode: "forwards" }}
+                        >
+                          <span className="text-red-600 mt-1">•</span>
+                          <span>{req}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  {/* Divider */}
+                  <div className="h-px bg-gradient-to-r from-transparent via-red-800/50 to-transparent" />
+                </>
+              )}
               {/* Rules & Guidelines */}
               <section
                 className="animate-content-fade-in opacity-0"
