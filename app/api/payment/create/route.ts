@@ -141,11 +141,15 @@ export async function POST(request: NextRequest) {
 
     // Get base URL for callback
     const baseUrl = process.env.BASE_URL || process.env.NEXTAUTH_URL || "http://localhost:3000"
-    const callbackUrl = `${baseUrl}/payment/confirm`
+    
+    // CRITICAL: Ensure callback URL is absolute and properly formatted
+    // PayApp needs to redirect here after payment with encrypted result
+    const callbackUrl = `${baseUrl}/payment/payapp-callback`
+    
+    console.log("[Payment] Setting callback URL:", callbackUrl)
+    console.log("[Payment] BASE_URL from env:", process.env.BASE_URL)
 
     // Prepare PayApp payload
-    // NOTE: client_returnurl is the user-facing page where PayApp redirects after payment
-    // This page will receive encrypted data and forward it to /api/payment/verify
     const payload = {
       reg_id,
       name: user.name || "Participant",
@@ -153,9 +157,11 @@ export async function POST(request: NextRequest) {
       category: type === "EVENT" ? PAYAPP_CATEGORIES.EVENT : PAYAPP_CATEGORIES[workshopId!],
       txn_id,
       amt: amount.toString(),
-      client_returnurl: callbackUrl,  // User-facing callback page /payment/confirm
+      client_returnurl: callbackUrl,
       provider: "2",
     }
+
+    console.log("[Payment] Full payload being sent to PayApp:", JSON.stringify(payload, null, 2))
 
     // Encrypt payload using PayApp API
     const encryptedOrUrl = await encryptPayApp(payload)

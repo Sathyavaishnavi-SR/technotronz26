@@ -191,6 +191,7 @@ export async function decryptPayApp(encryptedString: string): Promise<DecryptedR
   }
 
   console.log("[PayApp] Decrypting response, length:", encryptedString.length)
+  console.log("[PayApp] Encrypted string (first 100):", encryptedString.substring(0, 100))
 
   const response = await fetch(PAYAPP_DECRYPT_URL, {
     method: "POST",
@@ -200,7 +201,7 @@ export async function decryptPayApp(encryptedString: string): Promise<DecryptedR
       "APIClient_secret": clientSecret,
     },
     body: JSON.stringify({
-      data: encryptedString, // PayApp expects 'data' not 'dycryptstring'
+      Decryptstring: encryptedString,
     }),
   })
 
