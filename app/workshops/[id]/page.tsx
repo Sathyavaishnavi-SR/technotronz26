@@ -13,7 +13,7 @@ const workshopData: Record<
     title: string
     description: string[]
     rounds: { name: string; description: string }[]
-    venue: string
+    mode?: string
     dateTime: string
     rules: string[]
     coordinators: { name: string; phone: string }[]
@@ -31,7 +31,7 @@ const workshopData: Record<
       { name: "Round 1", description: "Exploration Phase - Navigate the foundational concepts" },
       { name: "Round 2", description: "Final Showdown - Apply your knowledge in the ultimate test" },
     ],
-    venue: "E-Block Lab 204",
+    mode: "Offline",
     dateTime: "February 28, 2025 — 10:00 AM to 1:00 PM",
     rules: [
       "Participants must arrive 15 minutes before the scheduled time",
@@ -56,7 +56,7 @@ const workshopData: Record<
       { name: "Round 1", description: "Discovery Phase - Uncover hidden technological secrets" },
       { name: "Round 2", description: "Implementation Phase - Build something extraordinary" },
     ],
-    venue: "Tech Hub - Room 302",
+    mode: "Offline",
     dateTime: "February 28, 2025 — 2:00 PM to 5:00 PM",
     rules: [
       "Individual participation only",
@@ -81,7 +81,7 @@ const workshopData: Record<
       { name: "Round 1", description: "Initiation - Enter the realm of advanced concepts" },
       { name: "Round 2", description: "Mastery - Prove your worth in the final challenge" },
     ],
-    venue: "Innovation Center - Hall A",
+    mode: "Offline",
     dateTime: "March 1, 2025 — 9:00 AM to 12:00 PM",
     rules: [
       "Pre-registration mandatory",
@@ -109,7 +109,7 @@ const defaultWorkshop = {
     { name: "Round 1", description: "Information Redacted" },
     { name: "Round 2", description: "Information Redacted" },
   ],
-  venue: "Location Classified",
+  mode: "Offline",
   dateTime: "Date & Time TBD",
   rules: ["Clearance Level 4 required", "Non-disclosure agreement mandatory", "Await further instructions"],
   coordinators: [{ name: "Agent [REDACTED]", phone: "CLASSIFIED" }],
@@ -397,20 +397,20 @@ export default function WorkshopDetailsPage({ params }: { params: Promise<{ id: 
                 </div>
               </section>
 
-              {/* Venue */}
+              {/* Mode */}
               <section
                 className="animate-section-fade-in opacity-0"
-                style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+                style={{ animationDelay: "0.75s", animationFillMode: "forwards" }}
               >
                 <h2 className="text-red-500 font-serif text-lg sm:text-xl tracking-wider mb-3 flex items-center gap-2 group">
                   <span
                     className="group-hover:animate-glitch-1"
                     style={{ textShadow: "0 0 10px rgba(220, 38, 38, 0.6)" }}
                   >
-                    VENUE
+                    MODE
                   </span>
                 </h2>
-                <p className="text-gray-300 text-sm sm:text-base font-mono">{workshop.venue}</p>
+                <p className="text-gray-300 text-sm sm:text-base font-mono">{workshop.mode || "Offline"}</p>
               </section>
 
               {/* Date & Time */}
@@ -429,10 +429,41 @@ export default function WorkshopDetailsPage({ params }: { params: Promise<{ id: 
                 <p className="text-gray-300 text-sm sm:text-base font-mono">{workshop.dateTime}</p>
               </section>
 
+              {/* Entry Fee */}
+              <section
+                className="animate-section-fade-in opacity-0"
+                style={{ animationDelay: "0.95s", animationFillMode: "forwards" }}
+              >
+                <h2 className="text-red-500 font-serif text-lg sm:text-xl tracking-wider mb-3 flex items-center gap-2 group">
+                  <span
+                    className="group-hover:animate-glitch-1"
+                    style={{ textShadow: "0 0 10px rgba(220, 38, 38, 0.6)" }}
+                  >
+                    ENTRY FEE
+                  </span>
+                </h2>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-3">
+                    <span className="text-red-600 font-mono text-xs mt-1">◉</span>
+                    <div>
+                      <span className="text-red-400 font-medium">Non-PSG Tech:</span>
+                      <span className="text-gray-400 ml-2 text-sm">Rs. 200</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-red-600 font-mono text-xs mt-1">◉</span>
+                    <div>
+                      <span className="text-red-400 font-medium">PSG Tech:</span>
+                      <span className="text-gray-400 ml-2 text-sm">Rs. 250</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* Rules */}
               <section
                 className="animate-section-fade-in opacity-0"
-                style={{ animationDelay: "1s", animationFillMode: "forwards" }}
+                style={{ animationDelay: "1.05s", animationFillMode: "forwards" }}
               >
                 <h2 className="text-red-500 font-serif text-lg sm:text-xl tracking-wider mb-3 flex items-center gap-2 group">
                   <span
@@ -455,7 +486,7 @@ export default function WorkshopDetailsPage({ params }: { params: Promise<{ id: 
               {/* Coordinators */}
               <section
                 className="animate-section-fade-in opacity-0"
-                style={{ animationDelay: "1.2s", animationFillMode: "forwards" }}
+                style={{ animationDelay: "1.3s", animationFillMode: "forwards" }}
               >
                 <h2 className="text-red-500 font-serif text-lg sm:text-xl tracking-wider mb-3 flex items-center gap-2 group">
                   <span
