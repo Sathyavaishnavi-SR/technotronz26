@@ -6,8 +6,15 @@ export async function POST(request: NextRequest) {
     message: "Logged out successfully",
   })
 
-  // Clear auth cookie
-  response.cookies.delete("auth_token")
+  response.cookies.set({
+    name: "auth_token",
+    value: "",
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",      //login la irukka same path
+    maxAge: 0,      // no value -> forces logout
+  })
 
   return response
 }
