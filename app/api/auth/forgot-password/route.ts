@@ -4,16 +4,6 @@ import bcrypt from "bcrypt"
 import connectDB from "@/lib/db"
 import User from "@/models/User"
 import PasswordResetToken from "@/models/PasswordResetToken"
-import nodemailer from "nodemailer"
-
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_SERVER_HOST,
-  port: Number(process.env.EMAIL_SERVER_PORT),
-  auth: {
-    user: process.env.EMAIL_SERVER_USER,
-    pass: process.env.EMAIL_SERVER_PASSWORD,
-  },
-})
 
 export async function POST(request: NextRequest) {
   try {
@@ -53,25 +43,13 @@ export async function POST(request: NextRequest) {
       expiresAt: new Date(Date.now() + 60 * 60 * 1000),
     })
 
-    // Send email
+    // Return reset token (in production, this would be sent via email)
     const resetUrl = `${process.env.NEXTAUTH_URL || "http://localhost:3000"}/reset-password?token=${resetToken}&email=${encodeURIComponent(email)}`
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
-      to: email,
-      subject: "Password Reset Request - Technotronz 2026",
-      html: `
-        <h2>Password Reset Request</h2>
-        <p>You requested to reset your password. Click the link below to reset it:</p>
-        <a href="${resetUrl}">${resetUrl}</a>
-        <p>This link will expire in 1 hour.</p>
-        <p>If you didn't request this, please ignore this email.</p>
-      `,
-    })
 
     return NextResponse.json({
       success: true,
-      message: "If an account exists, a password reset link has been sent",
+      message: "Password reset token generated. Use the link below:",
+      resetUrl, // In production, remove this and send via email
     })
   } catch (error: any) {
     console.error("[Forgot Password API] Error:", error)

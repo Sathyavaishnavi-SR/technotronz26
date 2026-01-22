@@ -1,5 +1,6 @@
+"use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { FloatingParticles } from "@/components/floating-particles"
 import { Loader2 } from "lucide-react"
@@ -97,7 +98,18 @@ export default function PayAppCallbackPage() {
         }}
       />
 
-      <PayAppCallbackContent />
+      <Suspense fallback={
+        <div className="relative z-20 max-w-lg mx-auto px-4 text-center">
+          <div className="relative bg-black/90 border border-cyan-800/40 p-8 sm:p-12 rounded-sm overflow-hidden">
+            <Loader2 className="w-16 h-16 text-cyan-500 mx-auto mb-6 animate-spin" />
+            <h1 className="font-serif text-3xl sm:text-4xl text-cyan-500 tracking-widest mb-4">
+              LOADING
+            </h1>
+          </div>
+        </div>
+      }>
+        <PayAppCallbackContent />
+      </Suspense>
     </main>
   )
 }
