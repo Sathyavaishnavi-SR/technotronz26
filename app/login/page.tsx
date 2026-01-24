@@ -34,9 +34,9 @@ export default function LoginPage() {
 
       if (response.ok) {
         if (data.user?.registrationCompleted) {
-          router.push("/events")
+          router.replace("/events")
         } else {
-          router.push("/register")
+          router.replace("/register")
         }
       } else {
         setMessage(data.error || "Authentication failed")

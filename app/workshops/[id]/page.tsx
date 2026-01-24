@@ -21,79 +21,41 @@ const workshopData: Record<
   }
 > = {
   "w-01": {
-    title: "WORKSHOP 1",
+    title: "LoRa Based IoT Application Development",
     description: [
-      "Venture into the unknown depths of emerging technology where reality bends and possibilities are limitless.",
-      "This classified briefing will expose you to advanced systems that exist beyond conventional understanding.",
-      "Only those brave enough to face the shadows of innovation will emerge with knowledge from the other side.",
+      "This workshop provides participants with a solid introduction to Internet of Things (IoT) technology through a blend of conceptual learning and hands-on experience. It covers embedded systems, microcontrollers, sensors, and key communication protocols used in real-world IoT applications. Participants will work with platforms such as Arduino and thingZkit Mini, along with wireless technologies like LoRa and LoRaWAN. The workshop also introduces cloud integration and data visualization for complete IoT solutions. By the end, participants will gain practical skills to work with modern hardware, collaborate ethically in teams or individually, and design innovative IoT solutions tailored to industry and client needs."
     ],
-    rounds: [
-      { name: "Round 1", description: "Exploration Phase - Navigate the foundational concepts" },
-      { name: "Round 2", description: "Final Showdown - Apply your knowledge in the ultimate test" },
-    ],
+    rounds: [],
     mode: "Offline",
-    dateTime: "February 28, 2025 — 10:00 AM to 1:00 PM",
+    dateTime: "07/02/2026 | 9:00 am - 5:00 pm",
     rules: [
-      "Participants must arrive 15 minutes before the scheduled time",
-      "Bring your own laptop with required software pre-installed",
-      "Team size: 2-3 members",
-      "No external assistance or internet access during rounds",
+      "Participation : Individual",
+      "Entry fee : Rs.500 (Same for PSG Tech and non-PSG Tech; no general fee required if attending only the workshop)",
     ],
     coordinators: [
-      { name: "John Doe", phone: "9876543210" },
-      { name: "Jane Doe", phone: "9876543211" },
+      { name: "Murali", phone: "+91 93426 28687" },
+      { name: "Prahalya", phone: "+91 93451 32434" },
     ],
     fileCode: "FILE W-01",
   },
   "w-02": {
-    title: "WORKSHOP 2",
+    title: "ModelCraft with MATLAB - Simulink for Industrial Applications",
     description: [
-      "Explore the parallel dimensions of innovation where technology transcends its earthly limitations.",
-      "Hands-on experiments with cutting-edge tools that blur the line between science and the supernatural.",
-      "The veil between worlds grows thin as you master techniques from realms unknown.",
+      "This workshop introduces Model-Based Development using MATLAB and Simulink for industrial applications, offering a systematic approach to designing, simulating, and validating complex systems. Participants will learn how mathematical models form the foundation of system development, enabling early testing, analysis, and optimization before hardware implementation. The workshop covers building dynamic models, performance evaluation, and automatic code generation for real-time and embedded systems. Industry-focused examples from control systems, automotive engineering, power electronics, and automation are explored. Through guided demonstrations and hands-on exercises, participants will understand how model-based design improves accuracy, reduces development time, and enhances reliability, preparing them for modern, industry-standard engineering workflows."
     ],
-    rounds: [
-      { name: "Round 1", description: "Discovery Phase - Uncover hidden technological secrets" },
-      { name: "Round 2", description: "Implementation Phase - Build something extraordinary" },
-    ],
+    rounds: [],
     mode: "Offline",
-    dateTime: "February 28, 2025 — 2:00 PM to 5:00 PM",
+    dateTime: "07/02/2026 | 9:00 am - 5:00 pm",
     rules: [
-      "Individual participation only",
-      "Basic programming knowledge required",
-      "Materials will be provided on-site",
-      "Certificates awarded to all participants",
+      "Participation : Individual",
+      "Entry fee : Rs.500 (Same for PSG Tech and non-PSG Tech; no general fee required if attending only the workshop)",
+      
     ],
     coordinators: [
-      { name: "Mike Wheeler", phone: "9876543212" },
-      { name: "Eleven", phone: "9876543213" },
+      { name: "Pavithran S Y", phone: "+91 93456 93986" },
+      { name: "Nishanth", phone: "+91 73058 54418" },
     ],
     fileCode: "FILE W-02",
-  },
-  "w-03": {
-    title: "WORKSHOP 3",
-    description: [
-      "Unlock hidden potentials in the realm of tech where the impossible becomes inevitable.",
-      "Secrets from the Upside Down revealed to those who dare to look beyond the surface.",
-      "Transform your understanding of technology in ways that defy conventional explanation.",
-    ],
-    rounds: [
-      { name: "Round 1", description: "Initiation - Enter the realm of advanced concepts" },
-      { name: "Round 2", description: "Mastery - Prove your worth in the final challenge" },
-    ],
-    mode: "Offline",
-    dateTime: "March 1, 2025 — 9:00 AM to 12:00 PM",
-    rules: [
-      "Pre-registration mandatory",
-      "Bring government-issued ID for verification",
-      "Limited seats available - first come, first served",
-      "No photography or recording allowed",
-    ],
-    coordinators: [
-      { name: "Dustin Henderson", phone: "9876543214" },
-      { name: "Lucas Sinclair", phone: "9876543215" },
-    ],
-    fileCode: "FILE W-03",
   },
 }
 
@@ -361,7 +323,7 @@ export default function WorkshopDetailsPage({ params }: { params: Promise<{ id: 
                     className="group-hover:animate-glitch-1"
                     style={{ textShadow: "0 0 10px rgba(220, 38, 38, 0.6)" }}
                   >
-                    EVENT DESCRIPTION
+                    WORKSHOP DESCRIPTION
                   </span>
                 </h2>
                 <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
@@ -371,31 +333,7 @@ export default function WorkshopDetailsPage({ params }: { params: Promise<{ id: 
                 </div>
               </section>
 
-              {/* Rounds */}
-              <section
-                className="animate-section-fade-in opacity-0"
-                style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
-              >
-                <h2 className="text-red-500 font-serif text-lg sm:text-xl tracking-wider mb-3 flex items-center gap-2 group">
-                  <span
-                    className="group-hover:animate-glitch-1"
-                    style={{ textShadow: "0 0 10px rgba(220, 38, 38, 0.6)" }}
-                  >
-                    NUMBER OF ROUNDS
-                  </span>
-                </h2>
-                <div className="space-y-2">
-                  {workshop.rounds.map((round, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className="text-red-600 font-mono text-xs mt-1">▸</span>
-                      <div>
-                        <span className="text-red-400 font-medium">{round.name}:</span>
-                        <span className="text-gray-400 ml-2 text-sm">{round.description}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              {/* Number of Rounds section removed as per requirements */}
 
               {/* Mode */}
               <section
@@ -449,14 +387,14 @@ export default function WorkshopDetailsPage({ params }: { params: Promise<{ id: 
                     <span className="text-red-600 font-mono text-xs mt-1">◉</span>
                     <div>
                       <span className="text-red-400 font-medium">Non-PSG Tech:</span>
-                      <span className="text-gray-400 ml-2 text-sm">Rs. 200</span>
+                      <span className="text-gray-400 ml-2 text-sm">Rs. 500</span>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-red-600 font-mono text-xs mt-1">◉</span>
                     <div>
                       <span className="text-red-400 font-medium">PSG Tech:</span>
-                      <span className="text-gray-400 ml-2 text-sm">Rs. 250</span>
+                      <span className="text-gray-400 ml-2 text-sm">Rs. 500</span>
                     </div>
                   </div>
                 </div>

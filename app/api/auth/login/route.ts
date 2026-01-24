@@ -56,13 +56,24 @@ export async function POST(request: NextRequest) {
       },
     })
 
+    // CRITICAL: TRUE SESSION COOKIE - NO maxAge, NO expires
+    // Cookie will be deleted when browser closes
     response.cookies.set("auth_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60, // 30 days
       path: "/",
+      // NO maxAge - makes it a session cookie
+      // NO expires - makes it a session cookie
     })
+
+    // Clear any leftover NextAuth cookies
+    response.cookies.delete("next-auth.session-token")
+    response.cookies.delete("__Secure-next-auth.session-token")
+    response.cookies.delete("next-auth.callback-url")
+    response.cookies.delete("next-auth.csrf-token")
+
+    console.log("[Login] ✓ Session cookie set (no expiry - browser session only)")
 
     return response
   } catch (error: any) {

@@ -63,7 +63,7 @@ export function ProfileDropdown() {
 
   const eventFeePaid = userDetails?.payment?.eventFeePaid || false
   const eventsRegistered = userDetails?.eventsRegistered || []
-  const workshopsRegistered = userDetails?.workshopsRegistered || []
+  const workshopsRegistered = (userDetails?.workshopsRegistered || []).filter(w => w !== "W-03" && w !== "w-03");
   const workshopPayments = userDetails?.workshopPayments || {}
   const workshopsPaidArray = userDetails?.payment?.workshopsPaid || []
 

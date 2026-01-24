@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Providers } from "@/components/providers"
 import { Navbar } from "@/components/navbar"
+import { Toaster } from "@/components/ui/toaster"
 
 // Fonts are loaded via CSS (e.g. Google Fonts) to avoid next/font/turbopack issues
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Analytics />
+          <Toaster />
         </Providers>
       </body>
     </html>

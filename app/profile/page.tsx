@@ -215,7 +215,7 @@ export default function ProfilePage() {
               </div>
 
               <div className="space-y-4">
-                {["W-01", "W-02", "W-03"].map((wid) => (
+                {["W-01", "W-02"].map((wid) => (
                   <div
                     key={wid}
                     className="flex items-center justify-between p-3 bg-red-950/10 border border-red-900/30 rounded-sm hover:border-red-600/40 transition-colors"
@@ -223,6 +223,7 @@ export default function ProfilePage() {
                     <div className="flex flex-col">
                       <span className="text-red-400 font-mono text-sm tracking-widest">{wid}</span>
                       <span className="text-gray-500 text-[10px] uppercase">Advanced Workshop Session</span>
+                      <span className="text-gray-400 text-xs font-mono mt-1">₹500</span>
                     </div>
                     <div>
                       {userData.workshopPayments?.[wid] === "PAID" ? (

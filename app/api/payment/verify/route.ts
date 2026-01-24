@@ -47,7 +47,7 @@ async function handleVerification(encryptedString: string | null) {
     console.log("Payment verify - txnstatus == 1:", decrypted.txnstatus == "1")
 
     // Check if payment was successful (txnstatus "1" = success)
-    if (decrypted.txnstatus === "1" || decrypted.txnstatus === 1) {
+    if (decrypted.txnstatus === "1") {
       // Update payment status
       payment.status = "SUCCESS"
       await payment.save()

@@ -5,29 +5,23 @@ export interface IUser extends Document {
   name: string
   email: string
   passwordHash: string
-  
   // TZ ID
   tzId: string
-
   // Registration details
   collegeName?: string
   mobileNumber?: string
   yearOfStudy?: string
   department?: string
   registrationCompleted: boolean
-
   // Role
   role: "user" | "admin"
-
   // Events
   eventsRegistered: string[]
-
   // Workshops
   workshopsRegistered: string[]
   workshopPayments: {
     [workshopId: string]: "PAID" | "NOT_PAID"
   }
-
   // Timestamps
   createdAt: Date
   updatedAt: Date

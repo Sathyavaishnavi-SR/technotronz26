@@ -10,6 +10,21 @@ function SuccessContent() {
   const searchParams = useSearchParams()
   const txnId = searchParams.get("txn_id")
   const isMock = searchParams.get("mock") === "true"
+  const workshopId = searchParams.get("workshopId")
+  const type = searchParams.get("type")
+
+  let whatsappLink = null;
+  let whatsappText = null;
+  if (type === "WORKSHOP" && workshopId === "w-01") {
+    whatsappLink = "https://chat.whatsapp.com/CD7y8CvmlBsDnQalwELjJC";
+    whatsappText = "Join the Workshop 1 WhatsApp Group";
+  } else if (type === "WORKSHOP" && workshopId === "w-02") {
+    whatsappLink = "https://chat.whatsapp.com/GByYRafVJTQ6ysn5Afw5fD";
+    whatsappText = "Join the Workshop 2 WhatsApp Group";
+  } else if (type === "EVENT" || (!type && !workshopId)) {
+    whatsappLink = "https://chat.whatsapp.com/EErhbuvqcfgCsaWxYFyhVn";
+    whatsappText = "Join the General Event WhatsApp Group";
+  }
 
   return (
     <div className="relative z-20 max-w-lg mx-auto px-4 text-center">
@@ -36,6 +51,20 @@ function SuccessContent() {
         <p className="text-gray-400 mb-6">
           Your payment has been processed successfully. You now have access to your registered events/workshops.
         </p>
+
+        {whatsappLink && (
+          <div className="mb-6">
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 bg-green-600/10 border border-green-600 text-green-400 font-mono text-sm tracking-wider rounded hover:bg-green-600/20 hover:text-green-300 transition-all"
+            >
+              {whatsappText}
+            </a>
+            <p className="text-xs text-gray-400 mt-2">You must join the WhatsApp group for further updates.</p>
+          </div>
+        )}
 
         {txnId && (
           <div className="p-3 bg-green-950/20 border border-green-900/50 mb-6">

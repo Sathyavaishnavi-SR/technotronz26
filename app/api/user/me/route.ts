@@ -7,6 +7,7 @@ import { cookies } from "next/headers"
 
 export async function GET() {
   try {
+    // FIX: cookies() is async in some Next.js setups, use await
     const cookieStore = await cookies()
     const auth = getAuthFromCookies(cookieStore)
 
@@ -17,12 +18,11 @@ export async function GET() {
     await connectDB()
 
     const user = await User.findById(auth.userId).select("-passwordHash")
-
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 })
     }
 
-    // Fetch payment status
+    // Fetch payment status (if you still need UserPayment)
     let paymentData = null
     const userPayment = await UserPayment.findOne({ userId: user._id })
     if (userPayment) {
@@ -33,7 +33,13 @@ export async function GET() {
       }
     }
 
-    // Convert Mongoose document to plain object
+    // Use workshopPayments directly if it's already an object
+    const workshopPayments =
+      typeof user.workshopPayments === "object" && user.workshopPayments !== null
+        ? user.workshopPayments
+        : {}
+
+    // Compose user data (NO duplicate keys)
     const userData = {
       id: user._id.toString(),
       name: user.name,
@@ -45,12 +51,9 @@ export async function GET() {
       department: user.department,
       registrationCompleted: user.registrationCompleted,
       eventsRegistered: user.eventsRegistered,
-      tzId: user.tzId,
-      registrationCompleted: user.registrationCompleted,
       role: user.role,
-      eventsRegistered: user.eventsRegistered,
       workshopsRegistered: user.workshopsRegistered,
-      workshopPayments: Object.fromEntries(user.workshopPayments || new Map()),
+      workshopPayments,
       payment: paymentData,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,

@@ -10,10 +10,9 @@ import { useSearchParams } from "next/navigation"
 const WORKSHOP_PRICES: Record<string, number> = {
   "W-01": 500,
   "W-02": 750,
-  "W-03": 1000,
 }
 
-const WORKSHOP_IDS = ["W-01", "W-02", "W-03"]
+const WORKSHOP_IDS = ["W-01", "W-02"]
 
 function PaymentContent() {
   const { user, isLoading: authLoading, isLoggedIn } = useAuth()

@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { FloatingParticles } from "@/components/floating-particles"
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const [newPassword, setNewPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -275,5 +275,19 @@ export default function ResetPasswordPage() {
         </div>
       </div>
     </main>
+  )
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+        <FloatingParticles />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-red-950/20 to-black" />
+        <div className="relative z-20 text-red-500 font-mono">Loading...</div>
+      </main>
+    }>
+      <ResetPasswordForm />
+    </Suspense>
   )
 }
